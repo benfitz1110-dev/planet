@@ -9,7 +9,7 @@
             <a-asset-item id="toilet" src="bathroom1.glb"></a-asset-item>
         </a-assets>
 
-        <a-entity gltf-model="#toilet" position="0 1 0"></a-entity>
+        <a-entity gltf-model="#toilet" position="0 2 0"></a-entity>
 
         <!-- Soft fill light keeps the darker parts of the model visible. -->
         <a-entity
@@ -23,15 +23,21 @@
 
         <!-- Metallic, low-roughness plane acts as the reflective floor. -->
         <a-plane
-          position="0 0 0"
-          rotation="-90 0 0"
-          width="10"
-          height="10"
+          position="0.65 2 0.8"
+          rotation="-180 90 90"
+          width="1.7"
+          height="1"
           material="shader: standard; color: #d9e4e8; metalness: 0.92; roughness: 0.08"
         ></a-plane>
 
-        <!-- Camera is placed in front of the model and tilted slightly downward. -->
-        <a-entity camera position="0 2.4 5.5" rotation="-14 0 0"></a-entity>
+        <!-- Camera starts in front of the model and supports mouse look plus WASD movement. -->
+        <a-entity
+          camera
+          position="0 2.4 5.5"
+          rotation="-14 0 0"
+          look-controls
+          wasd-controls="acceleration: 20"
+        ></a-entity>
     </a-scene>
   </body>
 </html>
