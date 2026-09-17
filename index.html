@@ -3,12 +3,35 @@
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
   </head>
   <body>
-    <a-scene>
+    <!-- Enable color management and physically accurate light falloff. -->
+    <a-scene renderer="colorManagement: true; physicallyCorrectLights: true">
         <a-assets>
             <a-asset-item id="toilet" src="bathroom1.glb"></a-asset-item>
         </a-assets>
 
-  <a-entity gltf-model="#toilet" position = "0 10 0"></a-entity>
-</a-scene>
+        <a-entity gltf-model="#toilet" position="0 1 0"></a-entity>
+
+        <!-- Soft fill light keeps the darker parts of the model visible. -->
+        <a-entity
+          light="type: ambient; color: #dce8ff; intensity: 1.6"
+        ></a-entity>
+        <!-- Warm directional light creates highlights on the polished floor. -->
+        <a-entity
+          light="type: directional; color: #fff4df; intensity: 2.5"
+          position="-3 6 4"
+        ></a-entity>
+
+        <!-- Metallic, low-roughness plane acts as the reflective floor. -->
+        <a-plane
+          position="0 0 0"
+          rotation="-90 0 0"
+          width="10"
+          height="10"
+          material="shader: standard; color: #d9e4e8; metalness: 0.92; roughness: 0.08"
+        ></a-plane>
+
+        <!-- Camera is placed in front of the model and tilted slightly downward. -->
+        <a-entity camera position="0 2.4 5.5" rotation="-14 0 0"></a-entity>
+    </a-scene>
   </body>
 </html>
